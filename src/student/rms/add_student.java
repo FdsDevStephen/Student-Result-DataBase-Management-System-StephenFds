@@ -1,8 +1,11 @@
 package student.rms;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
-public class add_student {
+public class add_student implements ActionListener {
     JFrame f;
     JLabel j1,j2,j3,j4,j5;
     JTextField t1,t2,t3,t4,t5;
@@ -48,6 +51,7 @@ public class add_student {
         t5.setBounds(300,350,150,25);
 
         b=new JButton("SUBMIT");
+        b.addActionListener(this);
         b.setBounds(275,400,100,25);
 
         f.add(j1);
@@ -67,6 +71,53 @@ public class add_student {
         f.setVisible(true);
         System.out.println("Hello");
     }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource()==b) {
+            String USN;
+
+            String sname;
+            String Branch;
+            String sem;
+            String gender;
+
+            USN = t1.getText();
+            System.out.println(USN);
+            sname = t2.getText();
+            Branch = t3.getText();
+            sem = t4.getText();
+            gender = t5.getText();
+
+            try {
+                if(t1.getText().equals(""))
+                {
+                    JOptionPane.showMessageDialog(null,"please fill every field");
+                }
+                else {
+
+                    try {
+                        connect c = new connect();
+                        String q = "INSERT INTO STUDENT(USN,SName,Branch,Semester,Gender)" + "VALUES('" + USN + "','" + sname + "','" + Branch + "','" + sem + "','" + gender + "')";
+                        c.statement.executeUpdate(q);
+                    }
+                    catch (SQLException ex) {
+                        ex.printStackTrace();
+                        System.out.println("SQL State: " + ex.getSQLState());
+                        System.out.println("Error Code: " + ex.getErrorCode());
+                        System.out.println("Message: " + ex.getMessage());
+                    }
+                }
+            }
+            catch (Exception ex){
+                ex.printStackTrace();
+            }
+        }
+
+
+
+        }
+
     public static void main(String[] args)
     {
         new add_student();

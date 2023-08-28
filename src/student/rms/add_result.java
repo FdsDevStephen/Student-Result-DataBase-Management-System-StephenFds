@@ -1,6 +1,8 @@
 package student.rms;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.sql.SQLException;
 
 public class add_result {
     JFrame f;
@@ -82,6 +84,47 @@ public class add_result {
         f.setVisible(true);
         System.out.println("Hello");
     }
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource()==b) {
+            String USN;
+
+            String sname;
+            String Branch;
+            String sem;
+            String gender;
+
+            USN = t1.getText();
+            System.out.println(USN);
+            sname = t2.getText();
+            Branch = t3.getText();
+            sem = t4.getText();
+            gender = t5.getText();
+
+            try {
+                if(t1.getText().equals(""))
+                {
+                    JOptionPane.showMessageDialog(null,"please fill every field");
+                }
+                else {
+
+                    try {
+                        connect c = new connect();
+                        String q = "INSERT INTO STUDENT(USN,SName,Branch,Semester,Gender)" + "VALUES('" + USN + "','" + sname + "','" + Branch + "','" + sem + "','" + gender + "')";
+                        c.statement.executeUpdate(q);
+                    }
+                    catch (SQLException ex) {
+                        ex.printStackTrace();
+                        System.out.println("SQL State: " + ex.getSQLState());
+                        System.out.println("Error Code: " + ex.getErrorCode());
+                        System.out.println("Message: " + ex.getMessage());
+                    }
+                }
+            }
+            catch (Exception ex){
+                ex.printStackTrace();
+            }
+        }
 
 
     public static void main(String[] args) {

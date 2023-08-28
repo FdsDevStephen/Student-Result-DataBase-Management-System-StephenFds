@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 
 class A_login implements ActionListener {
     JFrame f=new JFrame();
-    JButton b1,b2,b3,b4;
+    JButton b1,b2,b3,b4,b5;
 
     A_login()
     {
@@ -25,6 +25,9 @@ class A_login implements ActionListener {
         b4=new JButton("ALL STUDENT RESULT");
         b4.setBounds(400,150,200,25);
 
+        b5=new JButton("DELETE STUDENT DETAILS");
+        b5.setBounds(150,200,200,25);
+
         b1.addActionListener(this);
 
         b2.addActionListener(this);
@@ -33,10 +36,13 @@ class A_login implements ActionListener {
 
         b4.addActionListener(this);
 
+        b5.addActionListener(this);
+
         f.add(b1);
         f.add(b2);
         f.add(b3);
         f.add(b4);
+        f.add(b5);
         f.setLocationRelativeTo(null);
 
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -61,10 +67,14 @@ class A_login implements ActionListener {
         {
             System.out.println();
         }
+        else if(e.getSource()==b5)
+        {
+            new deletedetails();
+        }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
         new A_login();
-
     }
 }

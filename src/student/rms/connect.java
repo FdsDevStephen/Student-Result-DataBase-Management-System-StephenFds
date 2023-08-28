@@ -7,7 +7,7 @@ import java.sql.*;
 public class connect{
     Connection connection;
     Statement statement;
-    public Conn(){
+    public connect(){
         try{
             connection= DriverManager.getConnection("jdbc:mysql://localhost:3306/dbsr","root","2594");
             statement = connection.createStatement();

@@ -61,11 +61,11 @@ class A_login implements ActionListener {
         }
         else if(e.getSource()==b3)
         {
-            System.out.println();
+            new showStudent();
         }
         else if(e.getSource()==b4)
         {
-            System.out.println();
+            new showResult();
         }
         else if(e.getSource()==b5)
         {

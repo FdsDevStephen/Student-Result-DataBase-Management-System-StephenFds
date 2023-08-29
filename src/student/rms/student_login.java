@@ -33,7 +33,7 @@ public class student_login implements ActionListener{
         f.add(t1);
         f.add(t2);
 
-        sub=new JButton("Submit");
+        sub=new JButton("Enter");
         sub.setBounds(300,300,100,25);
         sub.addActionListener(this);
         f.add(sub);

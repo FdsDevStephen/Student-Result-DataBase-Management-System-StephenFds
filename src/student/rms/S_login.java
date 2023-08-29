@@ -8,7 +8,7 @@ public class S_login {
     {
         f.setLayout(null);
         f.setBounds(0,0,800,600);
-        f.setTitle("STUDENT DASHBOARD");
+        f.setTitle("STUDENT RESULT");
 
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 

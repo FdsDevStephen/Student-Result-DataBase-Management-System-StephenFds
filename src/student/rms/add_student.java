@@ -100,6 +100,10 @@ public class add_student implements ActionListener {
                         connect c = new connect();
                         String q = "INSERT INTO STUDENT(USN,SName,Branch,Semester,Gender)" + "VALUES('" + USN + "','" + sname + "','" + Branch + "','" + sem + "','" + gender + "')";
                         c.statement.executeUpdate(q);
+                        String r="INSERT INTO ALLR(USN,SName)"+"VALUES('"+USN+"','"+sname+"')";
+                        c.statement.executeUpdate(r);
+
+                        //new A_login();
                     }
                     catch (SQLException ex) {
                         ex.printStackTrace();
